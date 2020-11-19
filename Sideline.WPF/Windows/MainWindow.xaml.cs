@@ -14,8 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sideline.WPF.Controls;
+using Sideline.WPF.Extensions;
 
-namespace Sideline.WPF
+namespace Sideline.WPF.Windows
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
@@ -28,7 +29,15 @@ namespace Sideline.WPF
 
 			WebViewWindow = new WebViewWindow();
 			WebViewWindow.Show();
+
+			foreach( var tab in TabControl.Items.OfType<TabItem>() )
+			{
+				if( tab.Name == "TabScoreBoard" )
+					tab.Header = IconFont.Score + " " + tab.Header;
+			}
 		}
+
+		public Sideline Sideline = new();
 
 		public bool TimerIsRunning = false;
 

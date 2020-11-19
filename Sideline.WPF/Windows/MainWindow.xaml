@@ -1,4 +1,4 @@
-﻿<Window x:Class="Sideline.WPF.MainWindow"
+﻿<Window x:Class="Sideline.WPF.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,16 +17,16 @@
         
         <controls:StaticTop Grid.Row="0" x:Name="StaticTop"/>
         
-        <TabControl Grid.Row="1">
-            <TabItem Header="Scoreboard">
+        <TabControl Grid.Row="1" x:Name="TabControl">
+            <TabItem Header="Scoreboard" x:Name="TabScoreBoard">
                 <Grid>                    
                 </Grid>
             </TabItem>
-            <TabItem Header="Teams">
+            <TabItem Header="Teams" x:Name="TabTeams">
                 <Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Players">
+            <TabItem Header="Players" x:Name="TabPlayers">
                 <Grid>
                 </Grid>
             </TabItem>
@@ -42,7 +42,7 @@
                 <Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Settings">
+            <TabItem Header="Settings" x:Name="TabSettings">
                 <Grid>
                 </Grid>
             </TabItem>

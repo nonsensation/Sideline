@@ -5,7 +5,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
 
+    <TargetName>Sideline</TargetName>
+    
     <LangVersion>9.0</LangVersion>
+    
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    
+    <AnalysisLevel>preview</AnalysisLevel>
+    
+    <AssemblyName>Sideline</AssemblyName>
     
     <!-- Single EXE doesn't work for now, see: https://stackoverflow.com/questions/59357765/ -->
     <!--<PublishSingleFile>true</PublishSingleFile>-->

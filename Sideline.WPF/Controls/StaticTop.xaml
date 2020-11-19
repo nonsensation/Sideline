@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sideline.WPF.Controls"
              xmlns:icon="clr-namespace:Sideline.WPF.Extensions"
+             xmlns:controls="clr-namespace:Sideline.WPF.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -13,10 +14,21 @@
     <Grid>
 
         <Label x:Name="TimerIcon" Content="{x:Static icon:IconFont.PlayArrow}" FontFamily="{StaticResource Icomoon}" FontSize="72" FontWeight="Bold"
-               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" Width="116" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0,0,0,0" Height="116"/>
-        <Label x:Name="TimerText" Content="00 : 00" FontFamily="Quantico" FontSize="72" FontWeight="Bold" 
+               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" Width="116" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0,0,0,0" Height="116">
+            <Label.Effect>
+                <DropShadowEffect x:Name="TimerIconShadow" ShadowDepth="0" Color="Black" Opacity="0.0" BlurRadius="0"/>
+            </Label.Effect>
+        </Label>
+        <!--<Label x:Name="TimerText" Content="00 : 00" FontFamily="Quantico" FontSize="72" FontWeight="Bold" 
                Margin="85,0,0,0"
-               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" Width="311" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0,0,0,0" Height="116"/>
+               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" Width="311" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0,0,0,0" Height="116">
+            <Label.Effect>
+                <DropShadowEffect x:Name="TimerTextShadow" ShadowDepth="0" Color="Black" Opacity="0.0" BlurRadius="0"/>
+            </Label.Effect>
+        </Label>-->
+        <controls:Board x:Name="Timer" Width="350" Height="100" Margin="85,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center">
+            
+        </controls:Board>
         <Button x:Name="TimerButton" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Height="80" Width="386"
                 Foreground="{x:Null}" BorderBrush="{x:Null}" Background="Black" Opacity="0"
                 Click="TimerButton_Click" MouseEnter="TimerButton_MouseEnter" MouseLeave="TimerButton_MouseLeave" MouseDoubleClick="TimerButton_MouseDoubleClick" />

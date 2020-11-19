@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sideline.WPF.Extensions;
+using Sideline.WPF.Windows;
 
 namespace Sideline.WPF.Controls
 {
@@ -22,6 +23,10 @@ namespace Sideline.WPF.Controls
 		public StaticTop()
 		{
 			InitializeComponent();
+
+			Timer.Lhs.Content = "00";
+			Timer.Div.Content = ":";
+			Timer.Rhs.Content = "00";
 
 			TimerIcon.Content = IconFont.PlayArrow;
 		}
@@ -46,14 +51,12 @@ namespace Sideline.WPF.Controls
 			if( w.TimerIsRunning )
 			{
 				TimerIcon.Content = IconFont.Pause;
-				TimerButton.Background = new SolidColorBrush( Colors.LimeGreen );
-				TimerButton.Opacity = 0.1;
+				//TimerIconShadow.Color = TimerTextShadow.Color = Colors.Cyan;
 			}
 			else
 			{
 				TimerIcon.Content = IconFont.PlayArrow;
-				TimerButton.Background = new SolidColorBrush( Colors.Tomato );
-				TimerButton.Opacity = 0.1;
+				//TimerIconShadow.Color = TimerTextShadow.Color = Colors.Tomato;
 			}
 		}
 
@@ -63,7 +66,7 @@ namespace Sideline.WPF.Controls
 
 			var r = new Random();
 
-			TimerText.Content = $"{r.Next( 0 , 120 ):D2} : {r.Next( 0 , 60 ):D2}";
+			//TimerText.Content = $"{r.Next( 0 , 120 ):D2} : {r.Next( 0 , 60 ):D2}";
 
 			#endif
 		}
