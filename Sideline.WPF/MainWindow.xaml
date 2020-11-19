@@ -1,0 +1,51 @@
+﻿<Window x:Class="Sideline.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sideline.WPF"
+        
+        xmlns:controls="clr-namespace:Sideline.WPF.Controls"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" FontSize="18" Width="960" MinWidth="960" MaxWidth="960" MinHeight="540" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="540">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        
+        <controls:StaticTop Grid.Row="0" x:Name="StaticTop"/>
+        
+        <TabControl Grid.Row="1">
+            <TabItem Header="Scoreboard">
+                <Grid>                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Teams">
+                <Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Players">
+                <Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Matches">
+                <Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Penalty">
+                <Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="OBS">
+                <Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Settings">
+                <Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

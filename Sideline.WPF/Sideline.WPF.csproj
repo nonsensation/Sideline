@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <LangVersion>9.0</LangVersion>
+    
+    <!-- Single EXE doesn't work for now, see: https://stackoverflow.com/questions/59357765/ -->
+    <!--<PublishSingleFile>true</PublishSingleFile>-->
+    <!--<RuntimeIdentifier>win-x64</RuntimeIdentifier>-->
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\Icomoon\icomoon.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Styles\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.674-prerelease" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sideline.Domain\Sideline.Domain.csproj" />
+    <ProjectReference Include="..\Sideline.EntityFramework\Sideline.EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\Icomoon\icomoon.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

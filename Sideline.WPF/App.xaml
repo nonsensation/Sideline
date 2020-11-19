@@ -1,0 +1,10 @@
+﻿<Application x:Class="Sideline.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Sideline.WPF">
+    <Application.Resources>
+        <!-- see: https://stackoverflow.com/questions/6453640 -->
+        <FontFamily x:Key="Icomoon">/Sideline;/Resources/Fonts/Icomoon/icomoon.ttf#icomoon</FontFamily>
+        <!--<FontFamily x:Key="Icomoon">pack://application:,,,/Resources/Fonts/Icomoon/icomoon.ttf#icomoon</FontFamily>-->
+    </Application.Resources>
+</Application>
