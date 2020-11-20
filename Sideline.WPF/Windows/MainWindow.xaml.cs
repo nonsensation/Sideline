@@ -37,7 +37,7 @@ namespace Sideline.WPF.Windows
 			}
 		}
 
-		public Sideline Sideline = new();
+		public Sideline_ Sideline_ = new();
 
 		public bool TimerIsRunning = false;
 

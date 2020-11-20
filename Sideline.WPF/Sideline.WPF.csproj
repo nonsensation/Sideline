@@ -5,15 +5,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
 
-    <TargetName>Sideline</TargetName>
+    <!--<TargetName>Sideline</TargetName>-->
     
-    <LangVersion>9.0</LangVersion>
-    
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    
+    <LangVersion>9.0</LangVersion>    
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>    
     <AnalysisLevel>preview</AnalysisLevel>
     
-    <AssemblyName>Sideline</AssemblyName>
+    <!--<AssemblyName>Sideline.WPF</AssemblyName>-->
     
     <!-- Single EXE doesn't work for now, see: https://stackoverflow.com/questions/59357765/ -->
     <!--<PublishSingleFile>true</PublishSingleFile>-->
@@ -23,11 +21,16 @@
 
   <ItemGroup>
     <None Remove="Resources\Fonts\Icomoon\icomoon.ttf" />
+    <None Remove="Resources\Fonts\Quantico\OFL.txt" />
+    <None Remove="Resources\Fonts\Quantico\Quantico-Bold.ttf" />
+    <None Remove="Resources\Fonts\Quantico\Quantico-Regular.ttf" />
+    <None Remove="Resources\Fonts\Quicksand\OFL.txt" />
+    <None Remove="Resources\Fonts\Quicksand\Quicksand.ttf" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="State\" />
     <Folder Include="Styles\" />
-    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +44,21 @@
 
   <ItemGroup>
     <Resource Include="Resources\Fonts\Icomoon\icomoon.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Quantico\OFL.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Quantico\Quantico-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Quantico\Quantico-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Quicksand\OFL.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Quicksand\Quicksand.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

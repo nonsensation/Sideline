@@ -7,7 +7,7 @@ using Sideline.WPF.Extensions;
 
 namespace Sideline.WPF
 {
-	public partial class Sideline
+	public partial class Sideline_
 	{
 		public Timer Timer;
 		public TimerStopwatch TimerStopwatch = new();

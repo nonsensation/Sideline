@@ -3,48 +3,35 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Sideline.WPF"
-        
+        xmlns:local="clr-namespace:Sideline.WPF.Windows"
         xmlns:controls="clr-namespace:Sideline.WPF.Controls"
-        
+        xmlns:views="clr-namespace:Sideline.WPF.Views"
         mc:Ignorable="d"
-        Title="MainWindow" FontSize="18" Width="960" MinWidth="960" MaxWidth="960" MinHeight="540" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="540">
+        Title="Sideline" FontSize="18" Width="960" MinWidth="960" MaxWidth="960" MinHeight="540"
+        HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="540">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sideline.WPF;component/Resources/Common.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>        
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        
+
         <controls:StaticTop Grid.Row="0" x:Name="StaticTop"/>
         
         <TabControl Grid.Row="1" x:Name="TabControl">
             <TabItem Header="Scoreboard" x:Name="TabScoreBoard">
-                <Grid>                    
-                </Grid>
-            </TabItem>
-            <TabItem Header="Teams" x:Name="TabTeams">
-                <Grid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Players" x:Name="TabPlayers">
-                <Grid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Matches">
-                <Grid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Penalty">
-                <Grid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="OBS">
-                <Grid>
-                </Grid>
+                <views:Scoreboard/>
             </TabItem>
             <TabItem Header="Settings" x:Name="TabSettings">
-                <Grid>
-                </Grid>
+
             </TabItem>
         </TabControl>
     </Grid>
