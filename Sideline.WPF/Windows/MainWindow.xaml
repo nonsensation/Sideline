@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:Sideline.WPF.Controls"
         xmlns:views="clr-namespace:Sideline.WPF.Views"
         mc:Ignorable="d"
-        Title="Sideline" FontSize="18" Width="960" MinWidth="960" MaxWidth="960" MinHeight="540"
+        Title="Sideline" FontSize="16" Width="960" MinWidth="960" MaxWidth="960" MinHeight="540"
         HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="540">
 
     <Window.Resources>

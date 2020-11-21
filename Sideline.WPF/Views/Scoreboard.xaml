@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Sideline.WPF.Views"
              xmlns:tools="clr-namespace:Sideline.WPF.Controls.Toolbox"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" FontSize="16">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,34 +15,55 @@
         </ResourceDictionary>
     </UserControl.Resources>
     
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <GroupBox DockPanel.Dock="Left"  Header="Time">
-                <StackPanel>
+            <StackPanel>
+                <GroupBox Header="Time">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 0" HorizontalAlignment="Center">
+                                <tools:NumericUpDown></tools:NumericUpDown>
+                                <Label Margin="5 0" FontSize="24" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">:</Label>
+                                <tools:NumericUpDown></tools:NumericUpDown>
+                            </StackPanel>
+                            <Button Grid.Row="1" Width="120" VerticalAlignment="Center"  Margin="5 0">Set Time</Button>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Extra Time">
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10 0">
-                            <tools:NumericUpDown></tools:NumericUpDown>
-                            <Label Margin="15 0 15 5" FontSize="24" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">:</Label>
-                            <tools:NumericUpDown></tools:NumericUpDown>
-                        </StackPanel>
-                        <Button Grid.Row="1" Width="120" VerticalAlignment="Center"  Margin="10">Set Time</Button>
+                        <tools:NumericUpDown Grid.Column="0" Grid.Row="0" Margin="5"></tools:NumericUpDown>
+                        <Button Grid.Column="1" Grid.Row="0"  Margin="5">Set Extra Time</Button>
+                        <CheckBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                                  HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                  Margin="5 0">
+                            Enable Extra Time
+                        </CheckBox>
+                        <CheckBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                                  HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                  Margin="5 0">
+                            Stop Timer after Extra Time
+                        </CheckBox>
                     </Grid>
-                    <GroupBox Header="Period">
-                        <Grid></Grid>
-                    </GroupBox>
-                    <GroupBox Header="Extra Time">
-                        <Grid></Grid>
-                    </GroupBox>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox>
+            </StackPanel>
             <GroupBox Header="Score">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -51,30 +72,50 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"></ColumnDefinition>
                             <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" FontSize="72" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
-                               HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
-                        <Label Grid.Column="2" FontSize="72" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
-                               HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
-                        <Label Grid.Column="1" FontSize="72" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
+                        <Label Grid.Column="0" FontSize="42" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
+                               HorizontalContentAlignment="Center" VerticalContentAlignment="Center">999</Label>
+                        <Label Grid.Column="2" FontSize="42" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
+                               HorizontalContentAlignment="Center" VerticalContentAlignment="Center">999</Label>
+                        <Label Grid.Column="1" FontSize="42" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
                                HorizontalContentAlignment="Center" VerticalContentAlignment="Center">-</Label>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="125"></ColumnDefinition>
-                            <ColumnDefinition Width="150"></ColumnDefinition>
-                            <ColumnDefinition Width="125"></ColumnDefinition>
+                            <ColumnDefinition Width="90"></ColumnDefinition>
+                            <ColumnDefinition Width="70"></ColumnDefinition>
+                            <ColumnDefinition Width="90"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <tools:NumericUpDown Grid.Column="0" Margin="10 0"></tools:NumericUpDown>
-                        <tools:NumericUpDown Grid.Column="2" Margin="10 0"></tools:NumericUpDown>
-                        <Button Grid.Column="1" Height="27">Set Score</Button>
+                        <tools:NumericUpDown Grid.Column="0" Margin="5 0"></tools:NumericUpDown>
+                        <tools:NumericUpDown Grid.Column="2" Margin="5 0"></tools:NumericUpDown>
+                        <Button Grid.Column="1" Height="24">Set Score</Button>
                     </Grid>
                 </Grid>
             </GroupBox>
-            <!--<GroupBox Header="Info"></GroupBox>-->
+            <GroupBox Header="Period">
+                <Grid Margin="5 ">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Column="0" Grid.Row="0" Margin="5 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                     FontSize="16" Height="24">1st</TextBox>
+                    <Button Grid.Column="1" Grid.Row="0" Margin="5 0" Height="24">Set Period Text</Button>
+                    <tools:NumericUpDown Grid.Column="0" Grid.Row="1" Margin="5 0" ></tools:NumericUpDown>
+                    <Button Grid.Column="1" Grid.Row="1" Margin="5 0" Height="24">Set Period Time</Button>
+                    <CheckBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Margin="5 0"
+                              HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                        Stop Timer when Period ends</CheckBox>
+                </Grid>
+            </GroupBox>
         </StackPanel>
     </Grid>
 </UserControl>

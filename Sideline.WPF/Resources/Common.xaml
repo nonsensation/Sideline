@@ -6,4 +6,6 @@
     <FontFamily x:Key="Quantico-Bold">pack://application:,,,/Resources/Fonts/Quantico/Quantico-Bold.ttf#Quantico</FontFamily>
     <FontFamily x:Key="Quicksand">pack://application:,,,/Resources/Fonts/Quicksand/Quicksand.ttf#Quicksand</FontFamily>
 
+    
+    
 </ResourceDictionary>
