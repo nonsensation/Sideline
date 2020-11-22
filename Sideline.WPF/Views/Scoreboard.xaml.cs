@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Sideline.WPF.State;
+using Sideline.WPF.Windows;
 
 namespace Sideline.WPF.Views
 {
@@ -21,6 +23,23 @@ namespace Sideline.WPF.Views
 		public Scoreboard()
 		{
 			InitializeComponent();
+
+			this.Min.MaxValue = 999;
+			this.Sec.MaxValue = 59;
+
+			SetTime.Click += this.SetTime_Click;
+		}
+
+		private void SetTime_Click( object sender , RoutedEventArgs e )
+		{
+			AppState.TimerMin = this.Min.Value;
+			AppState.TimerSec = this.Sec.Value;
+
+			if( Window.GetWindow( this ) is not MainWindow w )
+				throw new Exception();
+
+			w.StaticTop.Timer.Lhs.Content = $"{AppState.TimerMin:D2}";
+			w.StaticTop.Timer.Rhs.Content = $"{AppState.TimerSec:D2}";
 		}
 	}
 }

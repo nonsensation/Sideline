@@ -35,7 +35,7 @@
                        Width="40" Height="40" Margin="0" />
             </Button>
             <Border DockPanel.Dock="Right" Width="1" Background="#FF707070" />
-            <TextBox FontFamily="{StaticResource Quicksand}" FontSize="16"
+            <TextBox x:Name="TextBox"  FontFamily="{StaticResource Quicksand}" FontSize="16"
                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                      BorderBrush="White">
                 0

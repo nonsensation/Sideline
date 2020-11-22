@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sideline.WPF.Controls;
 using Sideline.WPF.Extensions;
+using Sideline.WPF.State;
 
 namespace Sideline.WPF.Windows
 {
@@ -27,6 +28,9 @@ namespace Sideline.WPF.Windows
 		{
 			InitializeComponent();
 
+			
+
+
 			WebViewWindow = new WebViewWindow();
 			WebViewWindow.Show();
 
@@ -37,15 +41,11 @@ namespace Sideline.WPF.Windows
 			}
 		}
 
-		public Sideline_ Sideline_ = new();
-
-		public bool TimerIsRunning = false;
-
 		private WebViewWindow WebViewWindow;
 
 		protected override void OnClosing( CancelEventArgs e )
 		{
-			if( TimerIsRunning )
+			if( AppState.TimerIsRunning )
 			{
 				var result = MessageBox.Show(
 					"The Timer is running. Do you really want to close this application?" ,
@@ -64,5 +64,7 @@ namespace Sideline.WPF.Windows
 
 			base.OnClosing( e );
 		}
+
+		
 	}
 }

@@ -30,14 +30,15 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 0" HorizontalAlignment="Center">
-                                <tools:NumericUpDown></tools:NumericUpDown>
+                                <tools:NumericUpDown x:Name="Min"></tools:NumericUpDown>
                                 <Label Margin="5 0" FontSize="24" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">:</Label>
-                                <tools:NumericUpDown></tools:NumericUpDown>
+                                <tools:NumericUpDown x:Name="Sec"></tools:NumericUpDown>
                             </StackPanel>
-                            <Button Grid.Row="1" Width="120" VerticalAlignment="Center"  Margin="5 0">Set Time</Button>
+                            <Button x:Name="SetTime" Grid.Row="1" Width="120" VerticalAlignment="Center"  Margin="5 0">Set Time</Button>
                         </Grid>
                     </StackPanel>
                 </GroupBox>
+                <!--
                 <GroupBox Header="Extra Time">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -63,6 +64,7 @@
                         </CheckBox>
                     </Grid>
                 </GroupBox>
+                -->
             </StackPanel>
             <GroupBox Header="Score">
                 <Grid>
@@ -70,31 +72,25 @@
                         <RowDefinition Height="120"></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition Width="50"></ColumnDefinition>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" FontSize="42" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
-                               HorizontalContentAlignment="Center" VerticalContentAlignment="Center">999</Label>
-                        <Label Grid.Column="2" FontSize="42" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
-                               HorizontalContentAlignment="Center" VerticalContentAlignment="Center">999</Label>
-                        <Label Grid.Column="1" FontSize="42" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
-                               HorizontalContentAlignment="Center" VerticalContentAlignment="Center">-</Label>
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="90"></ColumnDefinition>
-                            <ColumnDefinition Width="70"></ColumnDefinition>
-                            <ColumnDefinition Width="90"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <tools:NumericUpDown Grid.Column="0" Margin="5 0"></tools:NumericUpDown>
-                        <tools:NumericUpDown Grid.Column="2" Margin="5 0"></tools:NumericUpDown>
-                        <Button Grid.Column="1" Height="24">Set Score</Button>
-                    </Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label x:Name="ScoreTextHome" Grid.Row="0" Grid.Column="0" FontSize="72" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center">999</Label>
+                    <Label x:Name="ScoreTextAway" Grid.Row="0" Grid.Column="2" FontSize="72" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center">999</Label>
+                    <Label Grid.Row="0" Grid.Column="1" FontSize="72" FontWeight="Bold" FontFamily="{StaticResource Quantico-Bold}"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center">-</Label>
+
+                    <tools:NumericUpDown x:Name="ScoreHome" Grid.Row="1" Grid.Column="0" Margin="20 0"></tools:NumericUpDown>
+                    <tools:NumericUpDown x:Name="ScoreAway" Grid.Row="1" Grid.Column="2" Margin="20 0"></tools:NumericUpDown>
+                    <Button x:Name="SetScore" Grid.Row="1" Grid.Column="1" Height="24" Margin="5 0">Set Score</Button>
                 </Grid>
             </GroupBox>
+            <!--
             <GroupBox Header="Period">
                 <Grid Margin="5 ">
                     <Grid.ColumnDefinitions>
@@ -116,6 +112,7 @@
                         Stop Timer when Period ends</CheckBox>
                 </Grid>
             </GroupBox>
+            -->
         </StackPanel>
     </Grid>
 </UserControl>

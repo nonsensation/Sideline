@@ -46,18 +46,18 @@ namespace Sideline.WPF.Controls
 			if( Window.GetWindow( this ) is not MainWindow w )
 				throw new Exception();
 
-			w.TimerIsRunning = !w.TimerIsRunning;
+			//w.TimerIsRunning = !w.TimerIsRunning;
 
-			if( w.TimerIsRunning )
-			{
-				TimerIcon.Content = IconFont.Pause;
-				//TimerIconShadow.Color = TimerTextShadow.Color = Colors.Cyan;
-			}
-			else
-			{
-				TimerIcon.Content = IconFont.PlayArrow;
-				//TimerIconShadow.Color = TimerTextShadow.Color = Colors.Tomato;
-			}
+			//if( w.TimerIsRunning )
+			//{
+			//	TimerIcon.Content = IconFont.Pause;
+			//	//TimerIconShadow.Color = TimerTextShadow.Color = Colors.Cyan;
+			//}
+			//else
+			//{
+			//	TimerIcon.Content = IconFont.PlayArrow;
+			//	//TimerIconShadow.Color = TimerTextShadow.Color = Colors.Tomato;
+			//}
 		}
 
 		private void TimerButton_MouseDoubleClick( object sender , MouseButtonEventArgs e )
