@@ -24,22 +24,21 @@ namespace Sideline.WPF.Windows
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public MainWindow()
+		public MainWindow( object dataContext )
 		{
 			InitializeComponent();
 
-			
+			DataContext = dataContext;
 
+            WebViewWindow = new WebViewWindow();
+            WebViewWindow.Show();
 
-			WebViewWindow = new WebViewWindow();
-			WebViewWindow.Show();
-
-			foreach( var tab in TabControl.Items.OfType<TabItem>() )
-			{
-				if( tab.Name == "TabScoreBoard" )
-					tab.Header = IconFont.Score + " " + tab.Header;
-			}
-		}
+            foreach( var tab in TabControl.Items.OfType<TabItem>() )
+            {
+                if( tab.Name == "TabScoreBoard" )
+                    tab.Header = IconFont.Score + " " + tab.Header;
+            }
+        }
 
 		private WebViewWindow WebViewWindow;
 

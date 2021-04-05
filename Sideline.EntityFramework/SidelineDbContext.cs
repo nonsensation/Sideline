@@ -12,39 +12,33 @@ namespace Sideline.EntityFramework
 		public DbSet<Team> Teams { get; set; }
 		public DbSet<Player> Players { get; set; }
 
-		private string servername = "localhost";
-		private int port = 3306;
-		private string databaseName = "Sideline";
-		private string userName = "root";
-		private string password = "";
+		public SidelineDbContext( DbContextOptions options ) : base( options ) { }
 
-		private string connectionString => $"server={servername};" +
-										   $"port={port};" +
-										   $"user={userName};" +
-										   $"password={password};" +
-										   $"database={databaseName};";
+		//protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
+		//{
+		//	if( !optionsBuilder.IsConfigured )
+		//	{
+		//		_ = optionsBuilder
 
-		protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
-		{
-			if( !optionsBuilder.IsConfigured )
-			{
-				_ = optionsBuilder
+  //              #region Pomelo
+  //                  //.UseMySql( connectionString , ServerVersion.AutoDetect( connectionString ) )
+  //              #endregion
 
-				#region Pomelo
-					.UseMySql( connectionString , ServerVersion.AutoDetect( connectionString ) )
-				#endregion
+  //              #region Sqlite
+		//			.UseSqlite( connectionString )
+  //              #endregion
 
-					.UseLoggerFactory( LoggerFactory.Create( loggingBuilder => loggingBuilder
-						  .AddConsole()
-						  .AddDebug()
-						  .AddFilter( level => level >= LogLevel.Information ) ) )
+  //                  .UseLoggerFactory( LoggerFactory.Create( loggingBuilder => loggingBuilder
+		//				  .AddConsole()
+		//				  .AddDebug()
+		//				  .AddFilter( level => level >= LogLevel.Information ) ) )
 
-					.EnableSensitiveDataLogging()
-					.EnableDetailedErrors()
-					.EnableServiceProviderCaching()
-					;
-			}
-		}
+		//			.EnableSensitiveDataLogging()
+		//			.EnableDetailedErrors()
+		//			.EnableServiceProviderCaching()
+		//			;
+		//	}
+		//}
 
 		protected override void OnModelCreating( ModelBuilder modelBuilder )
 		{
@@ -64,6 +58,8 @@ namespace Sideline.EntityFramework
 			//	b.Property( e => e.FullName ).IsRequired();
 			//	b.Property( e => e.ShortName ).IsRequired();
 			//} );
+
+			base.OnModelCreating( modelBuilder );
 		}
 	}
 }
