@@ -35,16 +35,12 @@
 	}
 
     main {
-        filter: url( #NoiseStyle );
-        /* background: #4605ff; */
-        background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 1px, transparent 6px);
-    background-size: 4px 4px;
+
     }
 </style>
 
 
 <div class="app">
-	<NoiseStyle />
 	<Header />
 
 	<main>
@@ -58,7 +54,6 @@
 
 <script>
 	import Header from '../components/Header.svelte'
-	import NoiseStyle from '../components/NoiseStyle.svelte'
 	import '../styles/style.postcss'
 
 </script>
