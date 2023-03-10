@@ -1,2 +1,4 @@
-// export const prerender = true
-// export const trailingSlash = 'never'
+// root layout
+
+export const prerender = true
+export const trailingSlash = 'never'
