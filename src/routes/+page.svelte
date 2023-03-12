@@ -1,15 +1,15 @@
 <style lang="postcss">
-h1 {
-    &:hover {
-        background-color: cyan;
-    }
-}
 
 </style>
 
-<h1>Welcome to SvelteKit</h1>
+<h1>Welcome to Sideline</h1>
 
+<div class="status" bind:this={status}>STATUS: {$obsIsConnected}</div>
 
 <script lang="ts">
+import { obsIsConnected } from "./game-setup/obs-store"
+
+let status
+
 
 </script>

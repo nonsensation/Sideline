@@ -27,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"marked": "^4.2.12"
+		"marked": "^4.2.12",
+		"obs-websocket-js": "^5.0.2"
 	}
 }

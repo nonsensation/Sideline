@@ -1,120 +1,59 @@
 
-<style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
+<style lang="postcss">
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
+header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
+nav {
+    background: linear-gradient(135deg, #9a0dfe, #637dfb);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
 
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
+    & > .menu-item {
+        & > a {
+            padding: 0.1rem 0.75rem;
+            text-decoration: none;
+            color: white;
 
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--color-theme-1);
-	}
+            &:hover {
+                background-color: rgba(255,255,255,0.2);
+                border-radius: 0.5rem;
+                /* outline: 1px solid white; */
+            }
+        }
+    }
+}
 </style>
 
 
 <header>
-	<div class="corner">
-	</div>
-
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li >
-				<a href="{ base }/">Home</a>
-			</li>
-			<li>
-				<a href="{ base }/about">About</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
+        <div class="menu-item">
+            <a href="{ base }/">Sideline</a>
+        </div>
+        <div class="menu-item">
+            <a href="{ base }/game-panel">Panel</a>
+        </div>
+        <div class="menu-item">
+            <a href="{ base }/game-setup">Setup</a>
+        </div>
+        <div class="menu-item">
+            <a href="">Settings</a>
+        </div>
+        <div class="menu-item">
+            <a href="{ base }/about">About</a>
+        </div>      
 	</nav>
-
-	<div class="corner">
-	</div>
-
-    <img src="{ base }/assets/images/github.svg" width="100px" alt="">
 </header>
 
 <script>
