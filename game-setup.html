@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout.9f234a4d.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_page.4b3186a9.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.e356f540.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2a432ef5.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.ba42f8bb.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.182b4091.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.aaaa2ce5.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.6fb6f1d6.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.ec51d113.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.50a6b084.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.73540493.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/game-setup-page.svelte.b8b8d224.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/obs-store.acec8cc6.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/game-setup-page.ts.0104f151.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div class="app" style="display: contents">
+
+
+<div class="app"><header class="svelte-4mschh"><nav class="svelte-4mschh"><div class="menu-item svelte-4mschh"><a href="/" class="svelte-4mschh">Sideline</a></div>
+        <div class="menu-item svelte-4mschh"><a href="/game-panel" class="svelte-4mschh">Panel</a></div>
+        <div class="menu-item svelte-4mschh"><a href="/game-setup" class="svelte-4mschh">Setup</a></div>
+        <div class="menu-item svelte-4mschh"><a href="" class="svelte-4mschh">Settings</a></div>
+        <div class="menu-item svelte-4mschh"><a href="/about" class="svelte-4mschh">About</a></div></nav>
+</header>
+
+	<main><fieldset class="grid-item obs svelte-1dclsqy"><legend class="svelte-1dclsqy">OBS Settings</legend>
+
+    <button class="btn btn-connect svelte-1dclsqy">Connect</button>
+
+    <input type="text" placeholder="IP" title="Websocket Server IP (for OBS it is usually 192.168.X.X)" class="svelte-1dclsqy" value="">
+    <input type="text" placeholder="Port" title="Port (for OBS it is usually 4455)" class="svelte-1dclsqy" value="">
+    <input type="password" placeholder="Password" title="If required by the OBS Websocket Server (can also be ampty)" class="svelte-1dclsqy" value="">
+
+    <a class="help-ext svelte-1dclsqy" href="" rel="noreferrer" target="_blank" title="Go to the OBS-Documentation">?
+    </a>
+
+    <textarea class="no-resize svelte-1dclsqy" spellcheck="false" disabled></textarea>
+</fieldset>
+<fieldset class="grid-item obs svelte-1yt6bub"><legend class="svelte-1yt6bub">Websocket Settings</legend>
+
+    <details open class="svelte-1yt6bub"><summary class="svelte-1yt6bub">Event-Names</summary>
+
+        <div class="flex svelte-1yt6bub"><h5 class="divider svelte-1yt6bub">Time</h5>
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_time_min">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_time_sec">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_time_period">
+
+        <h5 class="divider svelte-1yt6bub">Team</h5>
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_name_home">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_name_away">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_score_home">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_score_away">
+
+        <h5 class="divider svelte-1yt6bub">Colors &amp; Images</h5>
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_logo_home">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_score_away">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_logo_home">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_score_away">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_logo_home">
+
+        <input type="text" class="svelte-1yt6bub" value="sideline_obs_score_away"></div></details>
+
+</fieldset></main>
+
+</div>
+
+
+			
+			<script>
+				{
+					__sveltekit_12vzpm8 = {
+						env: {},
+						base: new URL(".", location).pathname.slice(0, -1),
+						element: document.currentScript.parentElement
+					};
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.e356f540.js"),
+						import("./_app/immutable/entry/app.6fb6f1d6.js")
+					]).then(([kit, app]) => {
+						kit.start(app, __sveltekit_12vzpm8.element, {
+							node_ids: [0, 5],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
+

@@ -1,7 +1,12 @@
 # Example Markdown Page
 
-## List
+## Resources & Credit
 
-* a random list
-* with some elements
-
+* Build with:
+    * [SvelteKit](https://kit.svelte.dev/)
+    * PostCSS
+* Libraries used:
+    * [OBS-Websockets.js](https://github.com/obs-websocket-community-projects/obs-websocket-js)
+* Scorebord OCR
+    * OpenCV.js
+    * Tesseract.js
