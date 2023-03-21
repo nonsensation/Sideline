@@ -36,7 +36,7 @@ details[open] summary {
     border-bottom: none;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
-    padding-bottom: 0;
+    padding-bottom: 1em;
 
     &:hover,
     &:focus {
@@ -46,8 +46,7 @@ details[open] summary {
 
 .flex {
     display: flex;
-    flex-flow: wrap;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 1rem;
     
     & > * {
@@ -73,6 +72,24 @@ details {
 
 
 }
+
+fieldset {
+    & label {
+        display: block;
+    }
+    & input[type="text"] {
+        border: none;
+        width: 100%;
+        &:hover,
+        &:focus {
+            outline: none;
+        }
+    }
+    &:hover,
+    &:focus {
+        border: 1px solid var(--default-browser-focus-color);
+    }
+}
 </style>
 
 <fieldset class="grid-item obs">
@@ -83,76 +100,20 @@ details {
 
         <div class="flex">
 
-        <h5 class="divider">Time</h5>
-
-        <input
-            bind:value={$wsEvents.min}
-            type="text"
-        />
-
-        <input
-            bind:value={$wsEvents.sec}
-            type="text"
-        />
-
-        <input
-            bind:value={$wsEvents.period}
-            type="text"
-        />
-
-        <h5 class="divider">Team</h5>
-
-        <input
-            bind:value={$wsEvents.name_home}
-            type="text"
-        />
-
-        <input
-            bind:value={$wsEvents.name_away}
-            type="text"
-        />
-
-        <input
-            bind:value={$wsEvents.score_home}
-            type="text"
-        />
-
-        <input
-            bind:value={$wsEvents.score_away}
-            type="text"
-        />
-
-        <h5 class="divider">Colors & Images</h5>
-
-        <input
-            bind:value={$wsEvents.logo_home}
-            type="text"
-        />
-
-        <input
-        type="text"
-            bind:value={$wsEvents.score_away}
-        />
-
-        <input
-            bind:value={$wsEvents.logo_home}
-            type="text"
-        />
-
-        <input
-        type="text"
-            bind:value={$wsEvents.score_away}
-        />
-
-        <input
-            bind:value={$wsEvents.logo_home}
-            type="text"
-        />
-
-        <input
-        type="text"
-            bind:value={$wsEvents.score_away}
-        />
+        {#each wsEvents as data }
+                <fieldset class="">
+                <legend>
+                    <label for={data.name}>{data.displayName}</label>
+                </legend>
+                <input
+                    type="text"
+                    bind:value={data.name}
+                    name={data.name}
+                    placeholder={data.defaultValue}
+                    title={data.description}
+                />
+            </fieldset>
+        {/each}
 
     </div>
     </details>
@@ -162,8 +123,9 @@ details {
 <script lang="ts">
 import { onMount } from "svelte"
 import { each } from "svelte/internal"
-import { wsEvents } from "./obs-websockets"
+// import { wsEvents } from "../../components/stores/obs-websockets"
 
+import { wsEvents } from "./ws-events";
 
 
 onMount( () =>{

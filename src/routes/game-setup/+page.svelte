@@ -8,7 +8,7 @@
 import { onMount } from "svelte"
 import SettingsObs from "./settings-obs.svelte";
 import SettingsWebSockets from "./settings-websockets.svelte";
-import { obsIsConnected } from "./obs-store"
+import { obsIsConnected } from "../../components/stores/obs-store"
 
 let settingsObs : SettingsObs
 let settingsWebSockets : SettingsWebSockets

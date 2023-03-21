@@ -36,6 +36,8 @@ button {
 
 legend {
     font-weight: 500;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
 }
 
 fieldset {
@@ -68,11 +70,11 @@ a.help-ext {
 
     }
 }
+
 </style>
 
-<fieldset class="grid-item obs">
+<fieldset class="grid-item">
     <legend>OBS Settings</legend>
-
     <button
         on:click={onClick}
         class:connected={$obsIsConnected}
@@ -80,26 +82,6 @@ a.help-ext {
         >
         {$obsIsConnected ? 'Disconnect' : 'Connect'}
     </button>
-
-    <input
-        type="text"
-        placeholder="IP"
-        bind:value={obsIp}
-        title="Websocket Server IP (for OBS it is usually 192.168.X.X)"
-    />
-    <input
-        type="text"
-        placeholder="Port"
-        bind:value={obsPort}
-        title="Port (for OBS it is usually 4455)"
-    />
-    <input
-        type="password"
-        placeholder="Password"
-        bind:value={obsPassword}
-        title="If required by the OBS Websocket Server (can also be ampty)"
-    />
-
     <a
         class="help-ext"
         href=""
@@ -109,7 +91,26 @@ a.help-ext {
     >
         ?
     </a>
-
+    <input
+        type="text"
+        placeholder="IP"
+        bind:value={obsIp}
+        class:invalid={!isIPAddress( obsIp )}
+        title="Websocket Server IP (for OBS it is usually 192.168.X.X)"
+    />
+    <input
+        type="text"
+        placeholder="Port"
+        bind:value={obsPort}
+        class:invalid={!isValidPort( obsPort )}
+        title="Port (for OBS it is usually 4455)"
+    />
+    <input
+        type="password"
+        placeholder="Password"
+        bind:value={obsPassword}
+        title="If required by the OBS Websocket Server (can also be ampty)"
+    />
     <textarea
         bind:this={obsStatusNode}
         class="no-resize"
@@ -121,31 +122,24 @@ a.help-ext {
 
 <script lang="ts">
 import { onMount } from "svelte"
-import { obs , obsIsConnected } from "./obs-store"
-
+import { obs , obsIsConnected } from "../../components/stores/obs-store"
+import { isIPAddress , isIPV6Address , isIPV4Address , ipVersion } from 'ip-address-validator';
 
 onMount( () =>{
-    obsIp       = localStorage.getItem( 'obs-ip'    ) || ''
-    obsPort     = localStorage.getItem( 'obs-port'  ) || ''
-    obsPassword = localStorage.getItem( 'obs-pw'    ) || ''
+    obsIp          = localStorage.getItem( 'obs-ip'    ) || ''
+    obsPort        = localStorage.getItem( 'obs-port'  ) || ''
+    obsPassword    = localStorage.getItem( 'obs-pw'    ) || ''
 
     obsStatusNode.value = sessionStorage.getItem( 'obs-status' ) || ''
-    obsStatusNode.scrollTop = obsStatusNode.scrollHeight
+
+    if( !$obsIsConnected )
+        toggleObs()
 } )
 
 let obsPort: string = ''
 let obsIp: string = ''
 let obsPassword: string = ''
-
-
-export function obsSend(
-    eventName: string,
-    data: any | undefined = undefined
-): void {}
-
-
 let obsStatusNode: HTMLTextAreaElement
-
 
 $obs.addListener("ConnectionClosed", (error:any) => {
     $obsIsConnected = false
@@ -159,8 +153,21 @@ $obs.addListener("ConnectionError", (error:any) => {
     obsOnDisconnect()
 })
 
+function isValidPort( portStr : string ) : boolean
+{
+    const port = Number( portStr )
+
+    return !isNaN( port ) && port > 0 && port < 9999
+}
+
 async function onClick()
 {
+    if( !$obsIsConnected )
+    {
+        if( !isIPAddress( obsIp ) || !isValidPort( obsPort ) )
+            return
+    }
+
     await toggleObs()
 
     if( $obsIsConnected )
@@ -173,42 +180,60 @@ async function onClick()
     }
 }
 
-function obsLog(msg: string) {
-    const time = new Date().toLocaleTimeString("de-de", {
-        timeStyle: "medium",
-    })
+function obsLog( msg: string )
+{
+    const time = new Date()
+        .toLocaleTimeString( "de-de" , {
+            timeStyle: "medium" ,
+        } )
 
-    obsStatusNode.value += `${time} | ${msg}\n`
-    obsStatusNode.scrollTop = obsStatusNode.scrollHeight
-
+    obsStatusNode.value = `${time} | ${msg}\n` + obsStatusNode.value
+    
     sessionStorage.setItem( 'obs-status' , obsStatusNode.value )
 }
 
-function obsOnDisconnect() {
+function obsOnDisconnect()
+{
 
 }
 
-function obsOnConnect() {
+function obsOnConnect()
+{
     localStorage.setItem( 'obs-ip'   , obsIp       )
     localStorage.setItem( 'obs-port' , obsPort     )
     localStorage.setItem( 'obs-pw'   , obsPassword )
 }
 
-async function toggleObs() {
-    if ($obsIsConnected) {
-        try {
+async function toggleObs()
+{
+    if( $obsIsConnected )
+    {
+        try
+        {
             await $obs.disconnect()
 
             $obsIsConnected = false
 
             obsLog(`Disconnected.`)
-        } catch (error: any) {
+        }
+        catch( error: any )
+        {
             obsLog(`Failed to disconnect ${error.code} , ${error.message}`)
         }
-    } else {
-        try {
+    }
+    else
+    {
+        try
+        {
+            let ip = obsIp.trim()
+            let port = obsPort.trim()
+            let pw = obsPassword
+
+            if( isIPV6Address( ip ) )
+            ip = `[${ip}]`
+
             const { obsWebSocketVersion, negotiatedRpcVersion } =
-                await $obs.connect(`ws://${obsIp}:${obsPort}`, obsPassword, {
+                await $obs.connect(`ws://${ip}:${port}` , pw , {
                     rpcVersion: 1,
                 })
 
@@ -217,7 +242,9 @@ async function toggleObs() {
             obsLog(
                 `Connected to the OBS-WebSocket-Server (Version: ${obsWebSocketVersion} RPC: ${negotiatedRpcVersion})`
             )
-        } catch (error: any) {
+        }
+        catch( error: any )
+        {
             $obsIsConnected = false
 
             obsLog(`Failed to connect ${error.code} , ${error.message}`)
@@ -227,7 +254,7 @@ async function toggleObs() {
 
 export async function obsSendData(eventName: string, data: any) : Promise<any | undefined>
 {
-    if (!$obsIsConnected)
+    if( !$obsIsConnected )
     {
         obsLog(`Cannot send data ${eventName} - not connected!`)
 
@@ -248,4 +275,5 @@ export async function obsSendData(eventName: string, data: any) : Promise<any | 
 
     return response
 }
+
 </script>

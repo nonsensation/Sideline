@@ -2,7 +2,9 @@
 
 </style>
 
-{@html data.post}
+<div class="grid-item">
+    {@html data.post}
+</div>
 
 <script lang="ts">
 

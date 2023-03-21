@@ -8,6 +8,7 @@ header {
     justify-content: center;
     align-items: center;
     margin: 2rem 0;
+    color: white;
 }
 
 nav {
@@ -19,30 +20,29 @@ nav {
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
 
-    & > .menu-item {
-        & > a {
-            padding: 0.1rem 0.75rem;
-            text-decoration: none;
-            color: white;
+    & a {
+        padding: 0.1rem 0.75rem;
+        text-decoration: none;
+        color: white;
 
-            &:hover {
-                background-color: rgba(255,255,255,0.2);
-                border-radius: 0.5rem;
-                /* outline: 1px solid white; */
-            }
+        &:hover {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 0.5rem;
+            outline: 1px solid white;
         }
     }
+    
 }
 </style>
 
 
-<header>
+<header class="{$$props.class ?? ''}">
 	<nav>
         <div class="menu-item">
             <a href="{ base }/">Sideline</a>
         </div>
         <div class="menu-item">
-            <a href="{ base }/game-panel">Panel</a>
+            <a href="{ base }/game-panel">Game</a>
         </div>
         <div class="menu-item">
             <a href="{ base }/game-setup">Setup</a>
@@ -58,5 +58,4 @@ nav {
 
 <script>
     import { base } from '$app/paths'
-
 </script>
