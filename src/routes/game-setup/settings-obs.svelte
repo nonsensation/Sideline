@@ -16,7 +16,7 @@ textarea {
     font-size: 80%;
 }
 
-button {
+button.btn-connect {
     min-width: 20em;
     font-weight: 500;
     background-image: linear-gradient(135deg, #febe0d88, #63fb8488);
@@ -70,32 +70,83 @@ a.help-ext {
 
     }
 }
+details {
+    &[open] {
+        width: 100%;
+    }
+}
 
+input {
+    text-align: center;
+}
+.input-port {
+    width: 4em;
+    text-align: center;
+}
+.input-ip {
+    width: 20em;
+}
+.input-password {
+    width: 10em;
+}
+
+.top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button.btn-help {
+    background-color: transparent;
+    width: 4em;
+    font-weight: bold;
+    color: #0d25fe
+}
 </style>
 
 <fieldset class="grid-item">
     <legend>OBS Settings</legend>
-    <button
-        on:click={onClick}
-        class:connected={$obsIsConnected}
-        class="btn btn-connect"
+
+    <div class="top">
+        <button
+            on:click={onClick}
+            class:connected={$obsIsConnected}
+            class="btn btn-connect"
+            >
+            {$obsIsConnected ? 'Disconnect' : 'Connect'}
+        </button>
+
+        <button
+            class="btn btn-help"
+            title="Show Help"
+            on:click={() => (showModal = true)}
         >
-        {$obsIsConnected ? 'Disconnect' : 'Connect'}
-    </button>
-    <a
-        class="help-ext"
-        href=""
-        rel="noreferrer"
-        target="_blank"
-        title="Go to the OBS-Documentation"
-    >
-        ?
-    </a>
+            ?
+        </button>
+    </div>
+        
+    <Modal bind:showModal>
+        <h2 slot="header">
+            Help
+        </h2>
+        <ul>
+            <li>Check your connection in OBS > Tab Tools > WebSocket Server Settings</li>
+            <li>The default OBS-WebSocket port is 4455</li>
+            <li>IPv4 and IPv6 addresses are supported</li>
+            <li>Password can be blank (if there is no password set in the WebSocket-Server)</li>
+            <li>Sideline will automatically reconnect on refresh</li>
+            <li>Settings will be saved in the browser (local storage)</li>
+            <li>Make sure you are on the same (lokal) network as your OBS WebSocket-Server</li>
+            <li>Or enable port forwarding in your router</li>
+        </ul>
+    </Modal>
+
     <input
         type="text"
         placeholder="IP"
         bind:value={obsIp}
         class:invalid={!isIPAddress( obsIp )}
+        class="input-ip"
         title="Websocket Server IP (for OBS it is usually 192.168.X.X)"
     />
     <input
@@ -103,12 +154,14 @@ a.help-ext {
         placeholder="Port"
         bind:value={obsPort}
         class:invalid={!isValidPort( obsPort )}
+        class="input-port"
         title="Port (for OBS it is usually 4455)"
     />
     <input
         type="password"
         placeholder="Password"
         bind:value={obsPassword}
+        class="input-password"
         title="If required by the OBS Websocket Server (can also be ampty)"
     />
     <textarea
@@ -123,7 +176,8 @@ a.help-ext {
 <script lang="ts">
 import { onMount } from "svelte"
 import { obs , obsIsConnected } from "../../components/stores/obs-store"
-import { isIPAddress , isIPV6Address , isIPV4Address , ipVersion } from 'ip-address-validator';
+import { isIPAddress , isIPV6Address , isIPV4Address , ipVersion } from 'ip-address-validator'
+import Modal from '../../components/util/Modal.svelte'
 
 onMount( () =>{
     obsIp          = localStorage.getItem( 'obs-ip'    ) || ''
@@ -140,6 +194,7 @@ let obsPort: string = ''
 let obsIp: string = ''
 let obsPassword: string = ''
 let obsStatusNode: HTMLTextAreaElement
+let showModal = false
 
 $obs.addListener("ConnectionClosed", (error:any) => {
     $obsIsConnected = false

@@ -18,61 +18,6 @@ input {
     }
 }
 
-summary {
-    cursor: pointer;
-    padding: 1em;
-    font-weight: bold;
-
-    border-radius: var(--border-radius);
-    border: var(--border);
-
-    &:hover,
-    &:focus {
-        outline: 2px solid var(--default-browser-focus-color);
-    }
-}
-
-details[open] summary {
-    border-bottom: none;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    padding-bottom: 1em;
-
-    &:hover,
-    &:focus {
-        outline: none;
-    }
-}
-
-.flex {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    
-    & > * {
-        flex-grow: 1;
-    }
-
-    & > .divider {
-        width: 100%;
-        border-bottom: 1px solid gainsboro;
-    }
-
-    border-radius: var(--border-radius);
-    border: var(--border);
-    padding: 1em;
-    padding-top: 0;
-    border-top: none;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-}
-
-details {
-
-
-
-}
-
 fieldset {
     & label {
         display: block;
@@ -98,7 +43,7 @@ fieldset {
     <details open>
         <summary>Event-Names</summary>
 
-        <div class="flex">
+        <div class="content">
 
         {#each wsEvents as data }
                 <fieldset class="">
@@ -109,7 +54,7 @@ fieldset {
                     type="text"
                     bind:value={data.name}
                     name={data.name}
-                    placeholder={data.defaultValue}
+                    placeholder={data.name}
                     title={data.description}
                 />
             </fieldset>

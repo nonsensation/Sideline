@@ -93,3 +93,55 @@ fieldset {
     background-image: linear-gradient(180deg, #0d25fe, #ae00ff);
     border-radius: var(--border-radius);
 }
+
+
+summary {
+    cursor: pointer;
+    padding: 1em;
+    font-weight: bold;
+
+    border-radius: var(--border-radius);
+    border: var(--border);
+
+    &:hover,
+    &:focus {
+        outline: 2px solid var(--default-browser-focus-color);
+    }
+}
+
+details[open] summary {
+    border-bottom: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-bottom: 1em;
+
+    &:hover,
+    &:focus {
+        outline: none;
+    }
+}
+
+details[open] {
+    width: 100%;
+}
+
+details {
+    & .content {
+        & > * {
+            margin: 0;
+        }
+        
+        &>.divider {
+            width: 100%;
+            border-bottom: 1px solid gainsboro;
+        }
+
+        border-radius: var(--border-radius);
+        border: var(--border);
+        padding: 1em;
+        padding-top: 0;
+        border-top: none;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+}
