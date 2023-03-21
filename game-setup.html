@@ -5,20 +5,20 @@
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
-		<link href="./_app/immutable/assets/_layout.33879e9a.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/_page.a0ae5514.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.8209c949.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.b0be7b9a.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.febf6e9a.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.c4b2a539.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.3b82368b.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.ac7e7504.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.e1c326cc.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/obs-store.596a91fc.js">
+		<link href="./_app/immutable/assets/_layout.068cc98b.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_page.46489b1b.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.f9ed6b3b.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.c94d9d39.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.f6fb5437.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2b58914d.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.e618705a.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.765794c2.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.cad97d41.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/obs-store.9aeed576.js">
 		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.50a6b084.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.73540493.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/game-setup-page.svelte.ee854109.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/game-setup-page.ts.f72dbc73.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/game-setup-page.svelte.d7be13e5.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/game-setup-page.ts.657abd14.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents" class="app">
@@ -31,49 +31,69 @@
         <div class="menu-item"><a href="/about" class="svelte-rtxrjc">About</a></div></nav>
 </header></div>
 	
-    <main class="grid svelte-1gtz3cx"><fieldset class="grid-item svelte-1ek9td9"><legend class="svelte-1ek9td9">OBS Settings</legend>
-    <button class="btn btn-connect svelte-1ek9td9">Connect</button>
-    <a class="help-ext svelte-1ek9td9" href="" rel="noreferrer" target="_blank" title="Go to the OBS-Documentation">?
-    </a>
-    <input type="text" placeholder="IP" title="Websocket Server IP (for OBS it is usually 192.168.X.X)" class="svelte-1ek9td9 invalid" value="">
-    <input type="text" placeholder="Port" title="Port (for OBS it is usually 4455)" class="svelte-1ek9td9 invalid" value="">
-    <input type="password" placeholder="Password" title="If required by the OBS Websocket Server (can also be ampty)" class="svelte-1ek9td9" value="">
-    <textarea class="no-resize svelte-1ek9td9" spellcheck="false" disabled></textarea>
+    <main class="grid svelte-1gtz3cx"><fieldset class="grid-item svelte-1h0wylw"><legend class="svelte-1h0wylw">OBS Settings</legend>
+
+    <div class="top svelte-1h0wylw"><button class="btn btn-connect svelte-1h0wylw">Connect</button>
+
+        <button class="btn btn-help svelte-1h0wylw" title="Show Help">?
+        </button></div>
+        
+    
+<dialog class="svelte-1yh2xbb"><div class="svelte-1yh2xbb"><h2 slot="header" class="svelte-1h0wylw">Help
+        </h2>
+		<hr>
+		<ul class="svelte-1h0wylw"><li>Check your connection in OBS &gt; Tab Tools &gt; WebSocket Server Settings</li>
+            <li>The default OBS-WebSocket port is 4455</li>
+            <li>IPv4 and IPv6 addresses are supported</li>
+            <li>Password can be blank (if there is no password set in the WebSocket-Server)</li>
+            <li>Sideline will automatically reconnect on refresh</li>
+            <li>Settings will be saved in the browser (local storage)</li>
+            <li>Make sure you are on the same (lokal) network as your OBS WebSocket-Server</li>
+            <li>Or enable port forwarding in your router</li></ul>
+		<hr>
+		
+		<button autofocus class="svelte-1yh2xbb">close modal</button></div>
+</dialog>
+
+    <input type="text" placeholder="IP" class="input-ip svelte-1h0wylw invalid" title="Websocket Server IP (for OBS it is usually 192.168.X.X)" value="">
+    <input type="text" placeholder="Port" class="input-port svelte-1h0wylw invalid" title="Port (for OBS it is usually 4455)" value="">
+    <input type="password" placeholder="Password" class="input-password svelte-1h0wylw" title="If required by the OBS Websocket Server (can also be ampty)" value="">
+    <textarea class="no-resize svelte-1h0wylw" spellcheck="false" disabled></textarea>
 </fieldset>
-<fieldset class="grid-item obs svelte-17qczez"><legend class="svelte-17qczez">Websocket Settings</legend>
+<fieldset class="grid-item obs svelte-s989oy"><legend class="svelte-s989oy">Websocket Settings</legend>
 
-    <details open class="svelte-17qczez"><summary class="svelte-17qczez">Event-Names</summary>
+    <details open><summary>Event-Names</summary>
 
-        <div class="flex svelte-17qczez"><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_time_min" class="svelte-17qczez">Minutes</label></legend>
-                <input type="text" name="sideline_ws_time_min" placeholder="0" title="" class="svelte-17qczez" value="sideline_ws_time_min">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_time_sec" class="svelte-17qczez">Seconds</label></legend>
-                <input type="text" name="sideline_ws_time_sec" placeholder="0" title="" class="svelte-17qczez" value="sideline_ws_time_sec">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_time_period" class="svelte-17qczez">Period</label></legend>
-                <input type="text" name="sideline_ws_time_period" placeholder="1" title="" class="svelte-17qczez" value="sideline_ws_time_period">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_time_color" class="svelte-17qczez">Timer Color</label></legend>
-                <input type="text" name="sideline_ws_time_color" placeholder="white" title="" class="svelte-17qczez" value="sideline_ws_time_color">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_score_color" class="svelte-17qczez">Score Color</label></legend>
-                <input type="text" name="sideline_ws_score_color" placeholder="white" title="" class="svelte-17qczez" value="sideline_ws_score_color">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_name_home" class="svelte-17qczez">Team Name Home</label></legend>
-                <input type="text" name="sideline_ws_team_name_home" placeholder="HOME" title="" class="svelte-17qczez" value="sideline_ws_team_name_home">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_name_guest" class="svelte-17qczez">Team Name Guest</label></legend>
-                <input type="text" name="sideline_ws_team_name_guest" placeholder="GUEST" title="" class="svelte-17qczez" value="sideline_ws_team_name_guest">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_score_home" class="svelte-17qczez">Team Score Home</label></legend>
-                <input type="text" name="sideline_ws_team_score_home" placeholder="0" title="" class="svelte-17qczez" value="sideline_ws_team_score_home">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_score_guest" class="svelte-17qczez">Team Score Guest</label></legend>
-                <input type="text" name="sideline_ws_team_score_guest" placeholder="0" title="" class="svelte-17qczez" value="sideline_ws_team_score_guest">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_logo_home" class="svelte-17qczez">Team Logo Home</label></legend>
-                <input type="text" name="sideline_ws_team_logo_home" placeholder="" title="" class="svelte-17qczez" value="sideline_ws_team_logo_home">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_logo_guest" class="svelte-17qczez">Team Logo Guest</label></legend>
-                <input type="text" name="sideline_ws_team_logo_guest" placeholder="" title="" class="svelte-17qczez" value="sideline_ws_team_logo_guest">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_textcolor_home" class="svelte-17qczez">Team Text Color Home</label></legend>
-                <input type="text" name="sideline_ws_team_textcolor_home" placeholder="black" title="" class="svelte-17qczez" value="sideline_ws_team_textcolor_home">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_textcolor_guest" class="svelte-17qczez">Team Text Color Guest</label></legend>
-                <input type="text" name="sideline_ws_team_textcolor_guest" placeholder="black" title="" class="svelte-17qczez" value="sideline_ws_team_textcolor_guest">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_background_home" class="svelte-17qczez">Team Text Color Home</label></legend>
-                <input type="text" name="sideline_ws_team_background_home" placeholder="white" title="" class="svelte-17qczez" value="sideline_ws_team_background_home">
-            </fieldset><fieldset class=" svelte-17qczez"><legend class="svelte-17qczez"><label for="sideline_ws_team_background_guest" class="svelte-17qczez">Team Text Color Guest</label></legend>
-                <input type="text" name="sideline_ws_team_background_guest" placeholder="white" title="" class="svelte-17qczez" value="sideline_ws_team_background_guest">
+        <div class="content"><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_time_min" class="svelte-s989oy">Minutes</label></legend>
+                <input type="text" name="sideline_ws_time_min" placeholder="sideline_ws_time_min" title="" class="svelte-s989oy" value="sideline_ws_time_min">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_time_sec" class="svelte-s989oy">Seconds</label></legend>
+                <input type="text" name="sideline_ws_time_sec" placeholder="sideline_ws_time_sec" title="" class="svelte-s989oy" value="sideline_ws_time_sec">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_time_period" class="svelte-s989oy">Period</label></legend>
+                <input type="text" name="sideline_ws_time_period" placeholder="sideline_ws_time_period" title="" class="svelte-s989oy" value="sideline_ws_time_period">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_time_color" class="svelte-s989oy">Timer Color</label></legend>
+                <input type="text" name="sideline_ws_time_color" placeholder="sideline_ws_time_color" title="" class="svelte-s989oy" value="sideline_ws_time_color">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_score_color" class="svelte-s989oy">Score Color</label></legend>
+                <input type="text" name="sideline_ws_score_color" placeholder="sideline_ws_score_color" title="" class="svelte-s989oy" value="sideline_ws_score_color">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_name_home" class="svelte-s989oy">Team Name Home</label></legend>
+                <input type="text" name="sideline_ws_team_name_home" placeholder="sideline_ws_team_name_home" title="" class="svelte-s989oy" value="sideline_ws_team_name_home">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_name_guest" class="svelte-s989oy">Team Name Guest</label></legend>
+                <input type="text" name="sideline_ws_team_name_guest" placeholder="sideline_ws_team_name_guest" title="" class="svelte-s989oy" value="sideline_ws_team_name_guest">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_score_home" class="svelte-s989oy">Team Score Home</label></legend>
+                <input type="text" name="sideline_ws_team_score_home" placeholder="sideline_ws_team_score_home" title="" class="svelte-s989oy" value="sideline_ws_team_score_home">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_score_guest" class="svelte-s989oy">Team Score Guest</label></legend>
+                <input type="text" name="sideline_ws_team_score_guest" placeholder="sideline_ws_team_score_guest" title="" class="svelte-s989oy" value="sideline_ws_team_score_guest">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_logo_home" class="svelte-s989oy">Team Logo Home</label></legend>
+                <input type="text" name="sideline_ws_team_logo_home" placeholder="sideline_ws_team_logo_home" title="" class="svelte-s989oy" value="sideline_ws_team_logo_home">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_logo_guest" class="svelte-s989oy">Team Logo Guest</label></legend>
+                <input type="text" name="sideline_ws_team_logo_guest" placeholder="sideline_ws_team_logo_guest" title="" class="svelte-s989oy" value="sideline_ws_team_logo_guest">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_textcolor_home" class="svelte-s989oy">Team Text Color Home</label></legend>
+                <input type="text" name="sideline_ws_team_textcolor_home" placeholder="sideline_ws_team_textcolor_home" title="" class="svelte-s989oy" value="sideline_ws_team_textcolor_home">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_textcolor_guest" class="svelte-s989oy">Team Text Color Guest</label></legend>
+                <input type="text" name="sideline_ws_team_textcolor_guest" placeholder="sideline_ws_team_textcolor_guest" title="" class="svelte-s989oy" value="sideline_ws_team_textcolor_guest">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_background_home" class="svelte-s989oy">Team Text Color Home</label></legend>
+                <input type="text" name="sideline_ws_team_background_home" placeholder="sideline_ws_team_background_home" title="" class="svelte-s989oy" value="sideline_ws_team_background_home">
+            </fieldset><fieldset class=" svelte-s989oy"><legend class="svelte-s989oy"><label for="sideline_ws_team_background_guest" class="svelte-s989oy">Team Text Color Guest</label></legend>
+                <input type="text" name="sideline_ws_team_background_guest" placeholder="sideline_ws_team_background_guest" title="" class="svelte-s989oy" value="sideline_ws_team_background_guest">
             </fieldset></div></details>
 
 </fieldset></main>
@@ -88,7 +108,7 @@
 			
 			<script>
 				{
-					__sveltekit_1ms1cgs = {
+					__sveltekit_3uwu37 = {
 						env: {},
 						base: new URL(".", location).pathname.slice(0, -1),
 						element: document.currentScript.parentElement
@@ -97,10 +117,10 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.8209c949.js"),
-						import("./_app/immutable/entry/app.ac7e7504.js")
+						import("./_app/immutable/entry/start.f9ed6b3b.js"),
+						import("./_app/immutable/entry/app.765794c2.js")
 					]).then(([kit, app]) => {
-						kit.start(app, __sveltekit_1ms1cgs.element, {
+						kit.start(app, __sveltekit_3uwu37.element, {
 							node_ids: [0, 5],
 							data,
 							form: null,
