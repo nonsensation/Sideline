@@ -6,17 +6,18 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
 		<link href="./_app/immutable/assets/_layout.068cc98b.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.f9ed6b3b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.c94d9d39.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.f6fb5437.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.2b58914d.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.e618705a.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.765794c2.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.cad97d41.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/obs-store.9aeed576.js">
+		<link href="./_app/immutable/assets/_page.8aca01ed.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.d67c13ce.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.d2b97ddc.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.42f7196f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.3eb3558b.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.0dfa1606.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.dcb72ba0.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.8f4d53d2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/obs-store.59af3cf9.js">
 		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.50a6b084.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.73540493.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/game-panel-page.svelte.e33c5813.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/game-panel-page.svelte.06738be2.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents" class="app">
@@ -29,7 +30,23 @@
         <div class="menu-item"><a href="/about" class="svelte-rtxrjc">About</a></div></nav>
 </header></div>
 	
-    <main class="grid svelte-1gtz3cx"></main>
+    <main class="grid svelte-1gtz3cx"><div class="container svelte-1nb73i6"><button class="time-set svelte-1nb73i6">EDIT
+        </button>
+    <div class="clock svelte-1nb73i6"><div class="min svelte-1nb73i6"><div class="display svelte-h6z7zm" data-content="88" spellcheck="false" contenteditable="false">13</div></div>
+        <div class="div display svelte-1nb73i6">:</div>
+        <div class="sec svelte-1nb73i6"><div class="display svelte-h6z7zm" data-content="88" spellcheck="false" contenteditable="false">37</div></div></div>
+    
+    <div class="teams svelte-1nb73i6"><div class="team team-home svelte-1nb73i6"><div class="name name-home svelte-1nb73i6">[HOME]
+            </div>
+            <div class="logo logo-home svelte-1nb73i6"><img src="" alt="" class="svelte-1nb73i6"></div>
+            <div class="score score-home svelte-1nb73i6"><div class="display svelte-h6z7zm" data-content="8" spellcheck="false" contenteditable="false">0</div></div></div>
+        
+        <div class="team team-guest svelte-1nb73i6"><div class="name name-guest svelte-1nb73i6">[GUEST]
+            </div>
+            <div class="logo logo-guest svelte-1nb73i6"><img src="" alt="" class="svelte-1nb73i6"></div>
+
+            <div class="score score-guest svelte-1nb73i6"><div class="display svelte-h6z7zm" data-content="8" spellcheck="false" contenteditable="false">0</div></div></div></div>
+</div></main>
 
     <div class="footer svelte-1gtz3cx"><footer class=" svelte-zrra3t">Status:
     <div class="status svelte-zrra3t">OBS</div>
@@ -41,7 +58,7 @@
 			
 			<script>
 				{
-					__sveltekit_3uwu37 = {
+					__sveltekit_dy8yl8 = {
 						env: {},
 						base: new URL(".", location).pathname.slice(0, -1),
 						element: document.currentScript.parentElement
@@ -50,10 +67,10 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.f9ed6b3b.js"),
-						import("./_app/immutable/entry/app.765794c2.js")
+						import("./_app/immutable/entry/start.d67c13ce.js"),
+						import("./_app/immutable/entry/app.dcb72ba0.js")
 					]).then(([kit, app]) => {
-						kit.start(app, __sveltekit_3uwu37.element, {
+						kit.start(app, __sveltekit_dy8yl8.element, {
 							node_ids: [0, 4],
 							data,
 							form: null,
