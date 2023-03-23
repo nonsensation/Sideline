@@ -1,7 +1,16 @@
 <style lang="postcss">
 
 * {
-    border: 1px dotted red;
+    /* outline: 1px dotted red; */
+
+    --color-active: red;
+    --color-inactive: tomato;
+    --color-edit: slateblue;
+    --color-disabled: gray;
+    --color-paused: darkgoldenrod;
+    --color-background: rgba(127, 127, 127, 0.25);
+
+    user-select: none;
 }
 
 :global(.display),
@@ -11,27 +20,23 @@
 }
 
 :global(.display) {
-    color: black;
+    color: var(--color-inactive);
 
 }
 
 :global(.display::after),
 :global(.display::before) {
-    color: lightgray;
+    color: var(--color-background);
 }
 
 :global(.display.canEdit) {
-    color: slateblue;
+    color: var(--color-edit);
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-items: center; */
-    /* align-content: center; */
     justify-content: space-between;
-    font-size: 5em;
 }
 
 .teams {
@@ -56,6 +61,7 @@ img {
 .clock {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
+    font-size: 10em;
 
     & .min {
         justify-self: end;
@@ -68,6 +74,32 @@ img {
     }
 }
 
+.team, 
+.period,
+.clock {
+    margin: 0.25em;
+    padding: 0.25em;
+    border-radius: var(--border-radius);
+    border: var(--border);
+    align-self: center;
+    justify-self: center;
+    width: auto;
+    background-color: black;
+    color: red;
+    cursor: pointer;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    font-size: 6em;
+}
+
+.period {
+    font-size: 4em;
+}
 </style>
 
 <div class="container">
@@ -78,7 +110,73 @@ img {
         >
             EDIT
         </button>
-    <div class="clock">
+    
+    <div class="teams">
+        <div class="team team-home">
+
+            <input
+                type="text"
+                placeholder="HOME"
+                class="name name-home"
+                bind:value={teamNameHome}
+            >
+
+            <div class="logo logo-home">
+                <img src="" alt="">
+            </div>
+
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <div class="score score-home"
+                on:click={onClick_ScoreHome}
+            >
+                <EditableDisplay
+                    class="display"
+                    bind:canEdit
+                    bind:textContent={scoreStrings[ 0 ]}
+                />
+            </div>
+
+        </div>
+        
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="team team-guest"
+            on:click={onClick_ScoreGuest}
+        >
+            <input
+                type="text"
+                placeholder="GUEST"
+                class="name name-guest"
+                bind:value={teamNameGuest}
+            >
+            <div class="logo logo-guest">
+                <img src="" alt="">
+            </div>
+
+            <div class="score score-guest">
+                <EditableDisplay
+                    class="display"
+                    bind:canEdit
+                    bind:textContent={scoreStrings[ 1 ]}
+                />
+            </div>
+        </div>
+    </div>
+
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="period"
+        on:click={onClick_Period}
+    >
+            <EditableDisplay
+                class="display"
+                bind:canEdit
+                bind:textContent={period}
+            />
+    </div>
+
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="clock"
+        on:click={onClick_Clock}
+    >
         <div class="min">
             <EditableDisplay
                 class="display"
@@ -95,48 +193,13 @@ img {
             />
         </div>
     </div>
-    
-    <div class="teams">
-        <div class="team team-home">
-            <div class="name name-home">
-                [HOME]
-            </div>
-            <div class="logo logo-home">
-                <img src="" alt="">
-            </div>
-            <div class="score score-home">
-                <EditableDisplay
-                    class="display"
-                    bind:canEdit
-                    bind:textContent={scoreStrings[ 0 ]}
-                />
-            </div>
-        </div>
-        
-        <div class="team team-guest">
-            <div class="name name-guest">
-                [GUEST]
-            </div>
-            <div class="logo logo-guest">
-                <img src="" alt="">
-            </div>
 
-            <div class="score score-guest">
-                <EditableDisplay
-                    class="display"
-                    bind:canEdit
-                    bind:textContent={scoreStrings[ 1 ]}
-                />
-            </div>
-        </div>
-    </div>
 </div>
 
 <script lang="ts">
 
 import '/node_modules/dseg/css/dseg.css'
-
-import EditableDisplay from '$lib/EditableDisplay.svelte';
+import EditableDisplay from '$lib/EditableDisplay.svelte'
 
 let canEdit = false
 let scoreStrings = [ '0' , '0' ]
@@ -144,8 +207,52 @@ let scores = [ 0 , 0 ]
 let timerMinStr : string = '13'
 let timerSecStr : string = '37'
 
+let teamNameHome = 'Home-Team'
+let teamNameGuest = 'Guest-Team'
+
 $: {
 
 }
 
+
+function onClick_ScoreHome()
+{
+    onClick_Score( 0 )
+}
+
+function onClick_ScoreGuest()
+{
+    onClick_Score( 1 )
+}
+
+function onClick_Score( teamIdx : number )
+{
+    if( canEdit )
+        return
+
+    scores[ teamIdx ] += 1
+    scoreStrings[ teamIdx ] = scores[ teamIdx ].toString()
+}
+
+function onClick_Clock()
+{
+    if( canEdit )
+        return
+}
+
+const periods = [ '1' , '2' , '3' , '4' ]
+let periodIdx = 0
+let period = periods[ periodIdx ]
+
+function onClick_Period()
+{
+    if( canEdit )
+        return
+
+
+
+    periodIdx = ( periodIdx + 1 ) % periods.length
+
+    period = periods[ periodIdx ]
+}
 </script>

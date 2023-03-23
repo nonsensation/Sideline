@@ -1,21 +1,31 @@
 <style lang="postcss">
 div {
     display: flex;
+    justify-content: center;
     user-select: none;
     position: relative;
     min-width: 1em;
+    z-index: 0;
 
     &::before {
+        z-index: -1;
         position: absolute;
         content: attr(data-content);
-        z-index: -1;
     }
  }
 
  .canEdit {
-    color: lightseagreen;
-    outline: 1px solid lightseagreen;
- }
+    color: slateblue;
+    outline: 2px dashed slateblue;
+    border-color: slateblue;
+
+    &[contenteditable="true"]:focus
+    {
+        color: lightseagreen;
+        outline: 2px solid lightseagreen;
+        cursor: text;
+    }
+}
 </style>
 
 <div
@@ -23,7 +33,7 @@ div {
     class:canEdit
     data-content={bgContent}
     spellcheck="false"
-    contenteditable="false"
+    contenteditable="true"
     bind:this={node}
     bind:textContent
     on:keypress={onKeypress}
