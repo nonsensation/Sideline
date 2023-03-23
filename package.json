@@ -28,6 +28,7 @@
   },
   "type": "module",
   "dependencies": {
+    "dseg": "^0.46.0",
     "ip-address-validator": "^1.0.9",
     "marked": "^4.2.12",
     "obs-websocket-js": "^5.0.2"

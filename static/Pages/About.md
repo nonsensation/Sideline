@@ -9,4 +9,5 @@
     * [OBS-Websockets.js](https://github.com/obs-websocket-community-projects/obs-websocket-js)
     * [Marked](https://github.com/markedjs/marked)
     * [IP Address Validator](https://github.com/vinaykumarbu/ip-address-validator#readme)
-
+    * Fonts:
+        * [DSEG Font](https://github.com/keshikan/DSEG)
