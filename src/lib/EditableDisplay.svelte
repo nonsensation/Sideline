@@ -5,6 +5,7 @@ div {
     user-select: none;
     position: relative;
     min-width: 1em;
+    min-height: 1em;
     z-index: 0;
 
     &::before {
@@ -37,22 +38,25 @@ div {
     bind:this={node}
     bind:textContent
     on:keypress={onKeypress}
+    on:blur={onBlur}
     on:paste|preventDefault
 >
 <slot></slot>
 </div>
 
 <script lang="ts">
-import { attr } from 'svelte/internal'
+    import { attr } from 'svelte/internal'
     import '/node_modules/dseg/css/dseg.css'
+	import { createEventDispatcher } from 'svelte';
 
+    
     export let textContent : string
     export let canEdit : boolean
-    // export let fgColor : string = 'black'
-    // export let bgColor : string = 'lightgray'
     
     let bgContent : string
     let node : HTMLDivElement
+
+	const dispatch = createEventDispatcher();
     
     $: {
         if( node )
@@ -68,6 +72,10 @@ import { attr } from 'svelte/internal'
     function onKeypress( event : KeyboardEvent ) {
         if( event.key === 'Enter' )
             event.preventDefault();
+    }
+
+    function onBlur() {
+		dispatch( 'blur' )
     }
 
 </script>

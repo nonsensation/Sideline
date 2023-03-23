@@ -4,11 +4,11 @@
     /* outline: 1px dotted red; */
 
     --color-active: red;
-    --color-inactive: tomato;
+    --color-inactive: red;
     --color-edit: slateblue;
     --color-disabled: gray;
     --color-paused: darkgoldenrod;
-    --color-background: rgba(127, 127, 127, 0.25);
+    --color-background: rgba(127, 127, 127, 0.2);
 
     user-select: none;
 }
@@ -84,7 +84,7 @@ img {
     align-self: center;
     justify-self: center;
     width: auto;
-    background-color: black;
+    /* background-color: black; */
     color: red;
     cursor: pointer;
 }
@@ -133,6 +133,7 @@ img {
                     class="display"
                     bind:canEdit
                     bind:textContent={scoreStrings[ 0 ]}
+                    on:blur={onBlur_ScoreHome}
                 />
             </div>
 
@@ -157,6 +158,7 @@ img {
                     class="display"
                     bind:canEdit
                     bind:textContent={scoreStrings[ 1 ]}
+                    on:blur={onBlur_ScoreGuest}
                 />
             </div>
         </div>
@@ -182,7 +184,8 @@ img {
                 class="display"
                 bind:canEdit
                 bind:textContent={timerMinStr}
-            />
+                on:blur={onBlur_TimeMin}
+                />
         </div>
         <div class="div display">:</div>
         <div class="sec">
@@ -190,7 +193,8 @@ img {
                 class="display"
                 bind:canEdit
                 bind:textContent={timerSecStr}
-            />
+                on:blur={onBlur_TimeSec}
+                />
         </div>
     </div>
 
@@ -207,6 +211,9 @@ let scores = [ 0 , 0 ]
 let timerMinStr : string = '13'
 let timerSecStr : string = '37'
 
+let timeMin = 0
+let timeSec = 0
+
 let teamNameHome = 'Home-Team'
 let teamNameGuest = 'Guest-Team'
 
@@ -214,14 +221,27 @@ $: {
 
 }
 
-
-function onClick_ScoreHome()
+function onBlur_ScoreHome() {
+    onBlur_Score( 0 )
+}
+function onBlur_ScoreGuest() {
+    onBlur_Score( 1 )
+}
+function onBlur_Score( teamIdx : number )
 {
-    onClick_Score( 0 )
+    if( !canEdit )
+        return
+
+    let score = parseInt( scoreStrings[ teamIdx ].trim() ) || 0
+
+    scores[ teamIdx ] = score
+    scoreStrings[ teamIdx ] = score.toString()
 }
 
-function onClick_ScoreGuest()
-{
+function onClick_ScoreHome() {
+    onClick_Score( 0 )
+}
+function onClick_ScoreGuest() {
     onClick_Score( 1 )
 }
 
@@ -254,5 +274,33 @@ function onClick_Period()
     periodIdx = ( periodIdx + 1 ) % periods.length
 
     period = periods[ periodIdx ]
+}
+
+function onBlur_TimeMin() {
+    if( !canEdit )
+        return
+
+    let min = parseInt( timerMinStr.trim() ) || 0
+
+    timerMinStr = min.toString()
+    
+    if( min < 10 )
+        timerMinStr = timerMinStr.padStart( 2 , '0' )
+
+    timeMin = min
+}
+
+function onBlur_TimeSec() {
+    if( !canEdit )
+        return
+
+    let sec = parseInt( timerSecStr.trim() ) || 0
+
+    timerSecStr = sec.toString()
+    
+    if( sec < 10 )
+        timerSecStr = timerSecStr.padStart( 2 , '0' )
+
+    timeSec = sec
 }
 </script>
