@@ -40,7 +40,7 @@ fieldset {
 <fieldset class="grid-item obs">
     <legend>Websocket Settings</legend>
 
-    <details open>
+    <details>
         <summary>Event-Names</summary>
 
         <div class="content">
@@ -67,18 +67,11 @@ fieldset {
 
 <script lang="ts">
 import { onMount } from "svelte"
-import { each } from "svelte/internal"
 // import { wsEvents } from "../../components/stores/obs-websockets"
-
 import { wsEvents } from "./ws-events";
-
 
 onMount( () =>{
 
 } )
-
-let obsPort: string = ''
-let obsIp: string = ''
-let obsPassword: string = ''
 
 </script>

@@ -7,6 +7,7 @@ div {
     min-width: 1em;
     min-height: 1em;
     z-index: 0;
+    border: 2px dashed transparent;
 
     &::before {
         z-index: -1;
@@ -17,15 +18,21 @@ div {
 
  .canEdit {
     color: slateblue;
-    outline: 2px dashed slateblue;
     border-color: slateblue;
+
+    &[contenteditable="true"]:hover
+    {
+        border-color: lightseagreen;
+    }
 
     &[contenteditable="true"]:focus
     {
+        outline: none;
+        border-style: solid;
+        border-color: lightseagreen;
         color: lightseagreen;
-        outline: 2px solid lightseagreen;
         cursor: text;
-    }
+    } 
 }
 </style>
 

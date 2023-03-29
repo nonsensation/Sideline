@@ -3,11 +3,11 @@
 * {
     /* outline: 1px dotted red; */
 
-    --color-active: red;
+    --color-active: MediumSeaGreen;
     --color-inactive: red;
     --color-edit: slateblue;
     --color-disabled: gray;
-    --color-paused: darkgoldenrod;
+    --color-paused: orange;
     --color-background: rgba(127, 127, 127, 0.2);
 
     user-select: none;
@@ -84,9 +84,16 @@ img {
     align-self: center;
     justify-self: center;
     width: auto;
-    /* background-color: black; */
-    color: red;
+    background-color: black;
+    color: gray;
     cursor: pointer;
+}
+
+.isRunning :global(.display) {
+    color: var(--color-active);
+}
+.isPaused :global(.display) {
+    color: var(--color-paused);
 }
 
 .team {
@@ -178,6 +185,8 @@ img {
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="clock"
         on:click={onClick_Clock}
+        class:isRunning={$timerIsRunning}
+        class:isPaused={!$timerIsRunning}
     >
         <div class="min">
             <EditableDisplay
@@ -204,15 +213,14 @@ img {
 
 import '/node_modules/dseg/css/dseg.css'
 import EditableDisplay from '$lib/EditableDisplay.svelte'
+import { timerIsRunning } from '../../components/stores/Sideline-store'
+
 
 let canEdit = false
 let scoreStrings = [ '0' , '0' ]
 let scores = [ 0 , 0 ]
-let timerMinStr : string = '13'
-let timerSecStr : string = '37'
-
-let timeMin = 0
-let timeSec = 0
+let timerMinStr : string = '00'
+let timerSecStr : string = '00'
 
 let teamNameHome = 'Home-Team'
 let teamNameGuest = 'Guest-Team'
@@ -258,9 +266,49 @@ function onClick_Clock()
 {
     if( canEdit )
         return
+
+    $timerIsRunning = !$timerIsRunning
+
+    if( $timerIsRunning )
+    {
+        startTime = Date.now() - elapsedTime
+
+        timerId = setInterval( () =>
+        {
+            elapsedTime = Date.now() - startTime
+
+            if( elapsedTime > endTime )
+            {
+                $timerIsRunning = false
+            }
+        } , 100 )
+    }
+    else
+    {
+        clearInterval( timerId )
+        $timerIsRunning = false
+    }
 }
 
+$: {
+    if( canEdit )
+    {
+        elapsedTime = ( parseInt( timerMinStr ) * 60 + parseInt( timerSecStr ) ) * 1000
+    }
+    else if( $timerIsRunning )
+    {
+        timerSecStr = Math.floor( (elapsedTime / 1000) % 60 ).toString().padStart( 2 , '0' )
+        timerMinStr = Math.floor( elapsedTime / (1000 * 60) ).toString().padStart( 2 , '0' )
+    }
+}
+
+let startTime = 0
+let elapsedTime = 0
+let endTime = 20 * 60 * 1000
+let timerId:NodeJS.Timer
+
 const periods = [ '1' , '2' , '3' , '4' ]
+
 let periodIdx = 0
 let period = periods[ periodIdx ]
 
@@ -276,11 +324,19 @@ function onClick_Period()
     period = periods[ periodIdx ]
 }
 
+let timeMin = 0
+let timeSec = 0
+
 function onBlur_TimeMin() {
     if( !canEdit )
         return
 
     let min = parseInt( timerMinStr.trim() ) || 0
+
+    if( min > 999 )
+        min = 999
+    else if( min < 0 )
+        min = 0
 
     timerMinStr = min.toString()
     
@@ -295,6 +351,11 @@ function onBlur_TimeSec() {
         return
 
     let sec = parseInt( timerSecStr.trim() ) || 0
+
+    if( sec > 59 )
+        sec = 59
+    else if( sec < 0 )
+        sec = 0
 
     timerSecStr = sec.toString()
     
